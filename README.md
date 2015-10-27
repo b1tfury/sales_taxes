@@ -97,7 +97,7 @@ Also install bundle to install gems used in the project.
 bundle install
 ```
 
-This will fetch and run all required gems
+This will fetch all required gems
 
 ## Run instructions
 
