@@ -6,5 +6,8 @@ module SalesTaxes
     it "should calculate the tax of non imported good" do
       expect(TaxCalculator.new("1 music CD at 14.99").calculate).to eq(1.50)
     end
+    it "should calculate the tax of imported good" do
+      expect(TaxCalculator.new("1 imported bottle of perfume at 27.99").calculate).to eq(4.20)
+    end
   end
 end

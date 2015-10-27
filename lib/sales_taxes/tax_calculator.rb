@@ -11,7 +11,9 @@ module SalesTaxes
         raise "No input was given to calculate tax"
       else
         item_details = Parser.new(@item).parse
-        if !item_details.imported
+        if item_details.imported
+          @sales_tax = (SALES_TAX + IMPORT_DUTY)* item_details.price
+        else
           @sales_tax = SALES_TAX*item_details.price
         end
         round_off(@sales_tax)
