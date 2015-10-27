@@ -105,4 +105,20 @@ This will fetch and run all required gems
 rake
 ```
 
+
 This command will run all test cases of the project.
+
+In order to run the application on terminal you need to move to application directory and type :
+ 
+```
+./bin/salestaxes  > output.txt
+```
+
+Followed by your inputs in this format :
+
+```
+1 imported bottle of perfume at 27.99
+```
+
+You will find your output in output.txt 
+
