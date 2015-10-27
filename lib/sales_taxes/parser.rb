@@ -13,7 +13,7 @@ module SalesTaxes
     end
 
     def parse
-      name_price = @input.split("at")
+      name_price = @input.split(" at ")
       item = @item.new
       item.price = name_price[1].to_f
       product_details = name_price[0].split(" ")
@@ -28,8 +28,9 @@ module SalesTaxes
       end
       item.good = ""
       good.each do |i|
-        item.good += i
+        item.good += i+ " "
       end
+      item.good.strip!
       item
     end
   end

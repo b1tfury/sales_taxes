@@ -11,9 +11,10 @@ module SalesTaxes
 
   describe Parser,"#parse" do
     it "should return the parsed values for a non imported item" do
-      item = Struct.new(:quantity,:imported,:good,:price)
-      op = item.new(1,false,"book",12.49)
       expect(Parser.new("1 book at 12.49").parse).to have_attributes(:quantity => 1,:imported => false,:good => "book",:price => 12.49)
+    end
+    it "should return the parsed values for a imported good" do
+      expect(Parser.new("1 imported bottle of perfume at 27.99").parse).to have_attributes(:quantity => 1,:imported => true,:good => "bottle of perfume",:price => 27.99)
     end
   end
 end
