@@ -1,6 +1,6 @@
 module SalesTaxes
   class Parser
-    def intialize(input=nil)
+    def initialize(input=nil)
       @input  = input
     end
 
@@ -8,7 +8,7 @@ module SalesTaxes
       if @input == nil
         raise "Nothing is passed to Parser"
       else
-        @input
+        return @input
       end
     end
   end
