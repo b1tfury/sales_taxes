@@ -15,12 +15,16 @@ require 'sales_taxes'
      calculator = SalesTaxes::TaxCalculator.new(item)
      item_detail =  parser.parse
      tax = calculator.calculate
-     print item_detail.quantity," ",item_detail.good,": ",(item_detail.price+tax).round(2),"\n"
+     if item_detail.imported
+       print item_detail.quantity," imported ",item_detail.good,": ",((item_detail.price*item_detail.quantity )+tax).round(2),"\n"
+     else
+       print item_detail.quantity," ",item_detail.good,": ",((item_detail.price*item_detail.quantity )+tax).round(2),"\n"
+     end
      @total_bill += (item_detail.price + tax)
      @total_sales_tax += tax
      item = gets
   end
 
-  print "Sales Taxes: ",@total_sales_tax,"\n"
+  print "Sales Taxes: ",@total_sales_tax.round(2),"\n"
   print "Total: ",@total_bill.round(2),"\n"
 

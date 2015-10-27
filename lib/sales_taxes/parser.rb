@@ -19,16 +19,17 @@ module SalesTaxes
       product_details = name_price[0].split(" ")
       item.quantity = product_details[0].to_i
       good = ""
-      if product_details[1] == "imported"
+      if product_details[1,product_details.size].include? "imported"
         item.imported = true
-        good = product_details[2,product_details.size]
       else
         item.imported = false
-        good = product_details[1,product_details.size]
       end
+      good = product_details[1,product_details.size]
       item.good = ""
       good.each do |i|
-        item.good += i+ " "
+        if i != "imported"
+          item.good += i+ " "
+        end
       end
       item.good.strip!
       item
