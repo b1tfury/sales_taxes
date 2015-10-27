@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift(File.expand_path(File.join(File.dirname(__FILE__), "..", "lib")))
+
+require 'sales_taxes'
+
+
+  @total_sales_tax = 0
+  @total_bill = 0
+
+  item = ""
+  item = gets
+  while item != "\n" do
+     parser = SalesTaxes::Parser.new(item)
+     calculator = SalesTaxes::TaxCalculator.new(item)
+     item_detail =  parser.parse
+     tax = calculator.calculate
+     print item_detail.quantity," ",item_detail.good,": ",(item_detail.price+tax).round(2),"\n"
+     @total_bill += (item_detail.price + tax)
+     @total_sales_tax += tax
+     item = gets
+  end
+
+  print "Sales Taxes: ",@total_sales_tax,"\n"
+  print "Total: ",@total_bill.round(2),"\n"
+
